@@ -1,0 +1,44 @@
+
+INÍCIO
+
+1. Definir tamanho do ambiente N
+2. Definir conjunto de obstáculos aleatórios (ou nenhum)
+3. Escolher posição inicial aleatória em uma célula livre
+4. Marcar posição inicial como visitada
+5. Empilhar posição inicial em PILHA
+
+FUNÇÃO EXPLORAR():
+    ENQUANTO PILHA não estiver vazia:
+        ATUAL ← topo da PILHA
+        VIZINHOS_NAO_VISITADOS ← lista de vizinhos de ATUAL 
+                                  que não são obstáculos 
+                                  e ainda não foram visitados
+        
+        SE VIZINHOS_NAO_VISITADOS não está vazia:
+            PROXIMO ← primeiro elemento de VIZINHOS_NAO_VISITADOS
+            Mover robô para PROXIMO
+            Marcar PROXIMO como visitado
+            Adicionar PROXIMO ao caminho percorrido
+            Empilhar PROXIMO em PILHA
+        SENÃO:
+            Desempilhar ATUAL (backtracking)
+
+FUNÇÃO CELULAS_ACESSIVEIS():
+    Usar busca em largura (BFS) a partir da posição inicial
+    Considerar apenas células livres (não obstáculos)
+    Retornar conjunto de todas as células acessíveis
+
+FUNÇÃO ESTATISTICAS():
+    ACESSIVEIS ← CELULAS_ACESSIVEIS()
+    COBERTURA ← (número de células visitadas / tamanho de ACESSIVEIS) * 100
+    PASSOS_REDUNDANTES ← (tamanho do caminho percorrido - células únicas visitadas)
+    SUCESSO ← (COBERTURA == 100)
+    Retornar métricas: {ACESSIVEIS, VISITADAS, COBERTURA, PASSOS, REDUNDANTES, SUCESSO}
+
+PROCEDIMENTO PRINCIPAL:
+    Executar EXPLORAR()
+    Calcular estatísticas com ESTATISTICAS()
+    Imprimir mapa explorado
+    Exibir métricas de avaliação
+
+FIM

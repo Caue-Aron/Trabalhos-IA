@@ -1,0 +1,23 @@
+
+Relatório de Implementação:
+
+	A lógica do código apresentado baseia-se em um robô explorador autônomo que percorre um ambiente representado por uma grade de 10x10, o robô é inicializado em 
+uma posição aleatória que não contenha obstáculo, e a exploração é feita utilizando uma abordagem baseada em profundidade com pilha. A cada passo, o robô avalia os 
+vizinhos da célula atual e move-se para o primeiro vizinho disponível ainda não visitado, registrando seu trajeto. Caso não haja vizinhos não explorados, o agente 
+realiza o backtracking, retornando por meio da pilha até encontrar novos caminhos.
+
+	No primeiro cenário, não há obstáculos, o que permite que o robô percorra livremente toda a grade, alcançando sempre 100% de cobertura. Já no segundo cenário, 
+são gerados obstáculos aleatórios que reduzem o espaço explorável. Nesse caso, o agente demonstraA sua capacidade de desvio e adaptação, contornando barreiras e 
+cobrindo todas as células acessíveis. O uso de busca em largura (BFS) na função auxiliar celulas_acessiveis permite calcular corretamente o conjunto de posições que 
+poderiam ser exploradas, servindo como base para avaliar a completude da exploração.
+
+	Quanto às métricas de avaliação, o agente apresentou:
+
+ - A completude da exploração, atingindo 100% das células acessíveis tanto em ambientes livres quanto em cenários com obstáculos.
+ 
+ - Em termos de eficiência de exploração, observou-se que a quantidade de passos redundantes é relativamente baixa, mas não nula, devido ao mecanismo de backtracking. 
+
+ - No quesito sucesso no desvio, o robô conseguiu cobrir todas as áreas acessíveis independentemente da configuração de obstáculos. 
+
+ - E em relação à generalização, a estratégia mostra robustez o comportamento do agente se mantém adequado mesmo em ambientes mais complexos, embora a eficiência 
+possa variar conforme a densidade e disposição dos obstáculos.
