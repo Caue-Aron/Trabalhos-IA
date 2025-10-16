@@ -171,6 +171,8 @@ def on_reset_clicked(b):
             grid_buttons[i][j].description = VAZIO
             grid_buttons[i][j].disabled = False
 
+    display(ui)
+
 for i in range(4):
     for j in range(4):
         grid_buttons[i][j].on_click(on_button_clicked)
